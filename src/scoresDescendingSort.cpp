@@ -19,7 +19,36 @@ struct student {
 	char name[10];
 	int score;
 };
+void copy_string(char d[], char s[]) {
+	int c = 0;
+
+	while (s[c] != '\0') {
+		d[c] = s[c];
+		c++;
+	}
+	d[c] = '\0';
+}
 
 void * scoresDescendingSort(struct student *students, int len) {
+	int i, j, temp, k;
+	char temch[10];
+	for (i = 0; i < (len - 1); i++)
+	{
+		for (j = 0; j < (len - i - 1); j++)
+		{
+			if (students[j].score < students[j + 1].score)
+			{
+				temp = students[j].score;
+				students[j].score = students[j + 1].score;
+				students[j + 1].score = temp;
+
+				copy_string(temch, students[j].name);
+				copy_string(students[j].name, students[j + 1].name);
+				copy_string(students[j + 1].name, temch);
+
+
+			}
+		}
+	}
 	return NULL;
 }
